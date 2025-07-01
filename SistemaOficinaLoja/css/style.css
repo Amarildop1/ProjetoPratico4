@@ -1,0 +1,196 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+nav a:hover {
+    background-color: #8B0000;
+    border-radius: 5px;
+}
+
+main {
+    padding: 10px;
+    min-height: calc(100vh - 120px);
+}
+
+footer {
+    background: #1a1a1a;
+    color: #ccc;
+    text-align: center;
+    padding: 15px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: auto;
+}
+
+.banner-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.sobre, .slide {
+    padding: 20px;
+}
+
+.slide-container {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+}
+
+.slide-container img {
+    height: 200px;
+    border-radius: 5px;
+}
+
+.faq-list li {
+    margin-bottom: 15px;
+}
+
+.produtos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #aaa;
+    padding: 15px;
+    width: 220px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.card-servico {
+    width: 260px;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.card-servico img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.servicos-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+form, .form-contato form {
+    background: #fff;
+    padding: 20px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    max-width: 500px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input[type="text"], input[type="email"], textarea {
+    padding: 10px;
+    border: 1px solid #999;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background: #8B0000;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover {
+    background-color: #b22222;
+}
+
+.missao-visao-valores {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.missao-visao-valores .card {
+    flex: 1 1 300px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.missao-visao-valores h2 {
+    margin-top: 0;
+    color: #8B0000;
+}
+
+.missao-visao-valores ul {
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+.titulo-center {
+    text-align: center;
+}
+
+
+/* Responsividade simples */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .missao-visao-valores {
+        flex-direction: column;
+    }
+    .card, .card-servico {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .slide-container {
+        overflow-x: scroll;
+    }
+}
