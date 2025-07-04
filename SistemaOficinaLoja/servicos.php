@@ -1,6 +1,39 @@
+<?php
+session_start();
+
+
+include('db/conexao.php');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $id_usuario = mysqli_real_escape_string($conexao, $_SESSION['cliente_id']);
+    $nome = mysqli_real_escape_string($conexao, $_SESSION['cliente_nome']);
+    $telefone = mysqli_real_escape_string($conexao, $_POST['telefone']);
+    $mensagem = mysqli_real_escape_string($conexao, $_POST['mensagem']);
+    $servico = mysqli_real_escape_string($conexao, $_POST['servico']);
+
+
+    $query = "INSERT INTO agendamentos (id_usuario, nome, telefone, mensagem, servico) VALUES ('$id_usuario', '$nome', '$telefone', '$mensagem', '$servico')";
+    if (mysqli_query($conexao, $query)) {
+        echo "<p><strong>Solicitação recebida. Entraremos em contato!</strong></p>";
+    } else {
+        echo "<p><strong>Erro ao enviar solicitação.</strong></p>";
+    }
+}
+
+
+// Se usuário NÃO está logado, salva a página atual para redirecionar depois
+if (!isset($_SESSION['cliente_id'])) {
+    // Salva a URL atual (servicos.php)
+    $_SESSION['redirect_after_login'] = $_SERVER['REQUEST_URI'];
+}
+
+?>
+
+
 <?php include('includes/header.php'); ?>
 
 <h1 class="titulo-center">Serviços de Manutenção</h1>
+
 <section class="servicos-cards">
     <div class="card-servico">
         <img src="imagens/mecanica.png" alt="Mecânica em Geral">
@@ -47,17 +80,34 @@
 
 <section class="form-agendamento">
     <h2>Agende seu atendimento</h2>
-    <form method="POST" action="servicos.php">
-        <input type="text" name="nome" placeholder="Seu nome" required>
-        <input type="text" name="telefone" placeholder="Telefone" required>
-        <textarea name="mensagem" placeholder="Serviço desejado" rows="5" required></textarea>
-        <input type="submit" value="Enviar Solicitação">
-    </form>
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        echo "<p><strong>Solicitação recebida. Entraremos em contato!</strong></p>";
-    }
-    ?>
+
+    <?php if (isset($_SESSION['cliente_id'])): ?>
+        <form method="POST" action="servicos.php">
+            <input type="text" value="<?= htmlspecialchars($_SESSION['cliente_nome']) ?>" readonly>
+
+            <input type="text" name="telefone" placeholder="Telefone" required>
+
+            <label for="servico">Escolha o serviço:</label>
+            <select name="servico" required>
+                <option value="Troca de óleo">Troca de óleo</option>
+                <option value="Revisão completa">Revisão completa</option>
+                <option value="Limpeza de Carburador">Limpeza de Carburador</option>
+                <option value="Revisão Elétrica">Revisão Elétrica</option>
+                <option value="Revisão Mecânica">Revisão Mecânica</option>
+                <option value="Restauração">Restauração</option>
+                <option value="Substituição de Bateria">Substituição de Bateria</option>
+                <option value="Troca de Peça">Troca de Peça</option>
+            </select>
+
+            <textarea name="mensagem" placeholder="Descreva sua mensagem aqui..." rows="5" required></textarea>
+            <input type="submit" value="Solicitar Serviço">
+        </form>
+    <?php else: ?>
+        <p style="color: red;">
+            Para solicitar um serviço, por favor <a href="login.php">faça login</a> ou <a href="cadastro.php">cadastre-se</a>.
+        </p>
+    <?php endif; ?>
 </section>
+
 
 <?php include('includes/footer.php'); ?>
