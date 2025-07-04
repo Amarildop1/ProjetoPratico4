@@ -1,5 +1,3 @@
-<!-- login.php -->
-
 <?php
 session_start();
 include('db/conexao.php');
@@ -22,6 +20,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (password_verify($senha, $cliente['senha'])) {
                 $_SESSION['cliente_id'] = $cliente['id'];
                 $_SESSION['cliente_nome'] = $cliente['nome'];
+
+                // Redirecionamento personalizado
+                if (isset($_SESSION['redirect_after_login'])) {
+                    $redirect_url = $_SESSION['redirect_after_login'];
+                    unset($_SESSION['redirect_after_login']);
+                    header("Location: $redirect_url");
+                    exit();
+                }
+                // Se não existir URL salva, redireciona para pedidos.php
                 header('Location: pedidos.php');
                 exit();
             }
