@@ -1,3 +1,4 @@
+
 CREATE DATABASE IF NOT EXISTS oficina_motos_motores;
 USE oficina_motos_motores;
 
@@ -48,4 +49,59 @@ CREATE TABLE clientes (
     senha VARCHAR(255)
 );
 
+
+CREATE TABLE agendamentos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT,
+    nome VARCHAR(100),
+    telefone VARCHAR(20),
+    mensagem TEXT,
+    servico VARCHAR(100),
+    data_solicitacao DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+
+/* CREATE TABLE IF NOT EXISTS carrinho (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  cliente_id INT,
+  produto_id INT,
+  quantidade INT,
+  FOREIGN KEY (cliente_id) REFERENCES clientes(id),
+  FOREIGN KEY (produto_id) REFERENCES produtos(id)
+);
+ */
+
+
+CREATE TABLE pedidos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id INT,
+    status ENUM('pendente', 'finalizado') DEFAULT 'pendente',
+    data_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id)
+);
+
+
+
+CREATE TABLE itens_pedido (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pedido_id INT,
+    produto_id INT,
+    quantidade INT,
+    FOREIGN KEY (pedido_id) REFERENCES pedidos(id),
+    FOREIGN KEY (produto_id) REFERENCES produtos(id)
+);
+
+
+-- SERVIÇOS
+CREATE TABLE servicos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100)
+);
+
+INSERT INTO servicos (nome) VALUES
+('Revisão geral'),
+('Troca de óleo'),
+('Alinhamento de rodas'),
+('Regulagem de freio'),
+('Instalação de escapamento');
 
