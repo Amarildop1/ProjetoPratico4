@@ -43,7 +43,7 @@
 
     <h1 class="titulo-center">Login do Cliente</h1>
 
-    <form method="POST" action="login.php">
+    <form method="POST" action="login.php" class="form-login">
         <label>Nome:</label>
         <input type="email" name="email" placeholder="Digite seu e-mail aqui..." required autofocus/>
         <label>Senha:</label>

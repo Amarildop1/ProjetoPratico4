@@ -30,7 +30,7 @@
 
     <h1 class="titulo-center"> Cadastro de Cliente </h1>
 
-    <form method="POST" action="cadastro.php">
+    <form method="POST" action="cadastro.php" class="form-cadastro">
         <label>Nome:</label>
         <input type="text" name="nome" placeholder="Seu nome aqui..." required autofocus/>
         <label>E-mail:</label>

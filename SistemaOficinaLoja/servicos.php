@@ -83,7 +83,7 @@
         <h2 class="titulo-center">Agende seu atendimento</h2>
 
         <?php if (isset($_SESSION['cliente_id'])): ?>
-            <form method="POST" action="servicos.php">
+            <form method="POST" action="servicos.php" class="form-servicos-atendimento">
                 <input type="text" value="<?= htmlspecialchars($_SESSION['cliente_nome']) ?>" readonly>
 
                 <input type="text" name="telefone" placeholder="Telefone" required>
