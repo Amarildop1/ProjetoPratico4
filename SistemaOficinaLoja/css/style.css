@@ -212,3 +212,65 @@ input[type="submit"]:hover {
         overflow-x: scroll;
     }
 }
+
+
+/* MENU mobile/responsivo */
+/* Esconder botão no desktop */
+.btn-menu {
+    font-size: 40px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    display: none; /* padrão escondido */
+}
+
+/* Esconder menu padrão no mobile */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+}
+
+
+@media (max-width: 767px) {
+    .btn-menu {
+        display: block; /* mostrar botão no mobile */
+        position: fixed;
+        top: 15px;
+        right: 15px;
+
+
+    }
+    
+    nav ul {
+        display: none; /* esconder menu padrão no mobile */
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 100px; /* altura do header - pra aparecer abaixo da logo*/
+        left: 0;
+        width: 100%;
+        padding: 10px 0;
+    }
+    
+    nav ul.aberto {
+        display: flex; /* mostrar menu quando aberto */
+    }
+    
+    nav ul li a {
+        color: white;
+        padding: 10px 15px;
+        display: block;
+        text-decoration: none;
+    }
+    
+    nav ul li a:hover {
+        background-color: #555;
+    }
+}
+
+
+
