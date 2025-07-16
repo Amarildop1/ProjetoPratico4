@@ -1,23 +1,23 @@
 ### Telas - Mobile:
 
 #### Login
-<img src="./Mobile-TelaLogin.png" width="420" height="840">
+<img src="./Mobile-TelaLogin.png" width="350" height="840">
 <br>
 
 #### Início
-<img src="./Mobile-TelaInicial.png" width="420" height="840">
+<img src="./Mobile-TelaInicial.png" width="350" height="840">
 <br>
 
 #### Serviços
-<img src="./Mobile-TelaServicos.png" width="420" height="840">
+<img src="./Mobile-TelaServicos.png" width="320" height="840">
 <br>
 
 #### Produtos
-<img src="./Mobile-TelaProdutos.png" width="420" height="840">
+<img src="./Mobile-TelaProdutos.png" width="320" height="840">
 <br>
 
 #### Contato
-<img src="./Mobile-TelaContato.png" width="420" height="840">
+<img src="./Mobile-TelaContato.png" width="350" height="840">
 <br>
 
 <hr>
